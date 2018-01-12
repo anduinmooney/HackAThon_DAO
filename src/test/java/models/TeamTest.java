@@ -7,7 +7,10 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class TeamTest {
-//    @Before
+    @Before
+    public void tearDown() {
+        Team.clearAllTeams();
+    }
 
     @Test
     public void team_instantiatesCorrectly_true() {
@@ -33,6 +36,12 @@ public class TeamTest {
         Team testTeam2 = new Team("Jimmy's Team", "Jimmy's Team Description");
         assertEquals(true, Team.getAllTeams().contains(testTeam));
         assertEquals(true, Team.getAllTeams().contains(testTeam2));
+    }
+
+    @Test
+    public void team_getTeamId_1() {
+        Team testTeam = new Team("Anduin's Team", "Anduin's Team Description");
+        assertEquals(1, testTeam.getTeamId());
     }
 
 
