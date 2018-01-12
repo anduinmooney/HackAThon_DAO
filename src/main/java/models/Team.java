@@ -11,7 +11,7 @@ public class Team {
     public Team(String teamName, String teamDescription) {
         hackTeamName = teamName;
         hackTeamDescription = teamDescription;
-        allTeams.add(null);
+        allTeams.add(this);
     }
 
     public String getTeamName() {

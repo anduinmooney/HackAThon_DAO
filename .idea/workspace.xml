@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6aed0876-7e35-47c3-9f5c-4370c4027d93" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/src/main/java/models/Team.java" afterPath="$PROJECT_DIR$/src/main/java/models/Team.java" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/models/TeamTest.java" afterPath="$PROJECT_DIR$/src/test/java/models/TeamTest.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -658,9 +657,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TeamTest - 2018.01.12 at 13h 35m 47s.xml">
-      <configuration name="TeamTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="TeamTest - 2018.01.12 at 13h 36m 03s.xml">
       <configuration name="TeamTest" configurationId="JUnit" />
     </history-entry>
@@ -686,6 +682,9 @@
       <configuration name="TeamTest" configurationId="JUnit" />
     </history-entry>
     <history-entry file="TeamTest - 2018.01.12 at 14h 08m 12s.xml">
+      <configuration name="TeamTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TeamTest - 2018.01.12 at 14h 08m 33s.xml">
       <configuration name="TeamTest" configurationId="JUnit" />
     </history-entry>
   </component>
