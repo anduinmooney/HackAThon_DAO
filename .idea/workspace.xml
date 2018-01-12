@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6aed0876-7e35-47c3-9f5c-4370c4027d93" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/java/models/MemberTest.java" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/main/java/models/Member.java" afterPath="$PROJECT_DIR$/src/main/java/models/Member.java" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/models/TeamTest.java" afterPath="$PROJECT_DIR$/src/test/java/models/TeamTest.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -68,14 +65,14 @@
       <file leaf-file-name="Member.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/models/Member.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="19" lean-forward="false" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
+            <state relative-caret-position="187">
+              <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#158#159#0" expanded="true" />
                 <element signature="e#195#196#0" expanded="true" />
                 <element signature="e#232#233#0" expanded="true" />
-                <element signature="e#259#260#0" expanded="true" />
+                <element signature="e#269#270#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -723,8 +720,8 @@
     <history-entry file="MemberTest - 2018.01.12 at 14h 21m 50s.xml">
       <configuration name="MemberTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TeamTest - 2018.01.12 at 14h 04m 20s.xml">
-      <configuration name="TeamTest" configurationId="JUnit" />
+    <history-entry file="MemberTest - 2018.01.12 at 14h 22m 18s.xml">
+      <configuration name="MemberTest" configurationId="JUnit" />
     </history-entry>
     <history-entry file="TeamTest - 2018.01.12 at 14h 05m 48s.xml">
       <configuration name="TeamTest" configurationId="JUnit" />
@@ -835,14 +832,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/models/Member.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="19" lean-forward="false" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
+        <state relative-caret-position="187">
+          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#158#159#0" expanded="true" />
             <element signature="e#195#196#0" expanded="true" />
             <element signature="e#232#233#0" expanded="true" />
-            <element signature="e#259#260#0" expanded="true" />
+            <element signature="e#269#270#0" expanded="true" />
           </folding>
         </state>
       </provider>
