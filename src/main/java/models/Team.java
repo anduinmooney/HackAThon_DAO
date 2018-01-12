@@ -7,8 +7,11 @@ public class Team {
     private String hackTeamName;
 
     public Team(String teamName, String teamDescription) {
-        hackTeamName = null;
+        hackTeamName = teamName;
     }
 
+    public String getTeamName() {
+        return null;
+    }
 
 }
