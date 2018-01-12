@@ -6,10 +6,12 @@ import java.util.List;
 public class Team {
     private String hackTeamName;
     private String hackTeamDescription;
+    private static List<Team> allTeams = new ArrayList<Team>();
 
     public Team(String teamName, String teamDescription) {
         hackTeamName = teamName;
         hackTeamDescription = teamDescription;
+        allTeams.add(null);
     }
 
     public String getTeamName() {
@@ -18,5 +20,9 @@ public class Team {
 
     public String getTeamDescription() {
         return hackTeamDescription;
+    }
+
+    public static List<Team> getAllTeams() {
+        return allTeams;
     }
 }

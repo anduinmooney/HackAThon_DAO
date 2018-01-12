@@ -27,6 +27,13 @@ public class TeamTest {
         assertEquals("Anduin's Team Description", testTeam.getTeamDescription());
     }
 
+    @Test
+    public void team_getAllTeams_true() {
+        Team testTeam = new Team("Anduin's Team", "Anduin's Team Description");
+        Team testTeam2 = new Team("Jimmy's Team", "Jimmy's Team Description");
+        assertEquals(true, Team.getAllTeams().contains(testTeam));
+        assertEquals(true, Team.getAllTeams().contains(testTeam2));
+    }
 
 
 
