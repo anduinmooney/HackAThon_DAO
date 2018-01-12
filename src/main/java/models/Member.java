@@ -4,8 +4,9 @@ import java.util.List;
 
 public class Member {
     private String hackMemberName;
-    private static List<Member> allMembers = new ArrayList<Member>();
     private int hackMemberId;
+    private static List<Member> allMembers = new ArrayList<Member>();
+
 
 
     public Member(String name) {
@@ -23,6 +24,10 @@ public class Member {
     }
 
     public int getMemberId() {
-        return 1337;
+        return hackMemberId;
+    }
+
+    public static void clearAllMembers() {
+        allMembers.clear();
     }
 }

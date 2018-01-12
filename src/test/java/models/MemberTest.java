@@ -7,7 +7,10 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class MemberTest {
-//    @Before
+    @Before
+    public void tearDown() {
+        Member.clearAllMembers();
+    }
 
 
     @Test
@@ -31,9 +34,11 @@ public class MemberTest {
     }
 
     @Test
-    public void member_getMemberId_1() {
+    public void member_getMemberId_true() {  //For some reason, expected starts here at 0, whilst the team array starts at 1.
         Member testMember = new Member("Anduin");
-        assertEquals(1, testMember.getMemberId());
+        Member testMember2 = new Member("Jimmy");
+        Member testMember3 = new Member("Timmy");
+        assertEquals(2, testMember3.getMemberId());
     }
 
 //    @After
