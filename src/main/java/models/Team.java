@@ -29,7 +29,7 @@ public class Team {
     }
 
     public int getTeamId() {
-        return 1;
+        return hackTeamId;
     }
 
     public static void clearAllTeams() {
