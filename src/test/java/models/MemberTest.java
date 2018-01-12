@@ -30,5 +30,11 @@ public class MemberTest {
         assertEquals(true, Member.getAllMembers().contains(testMember2));
     }
 
+    @Test
+    public void member_getMemberId_1() {
+        Member testMember = new Member("Anduin");
+        assertEquals(1, testMember.getMemberId());
+    }
+
 //    @After
 }
