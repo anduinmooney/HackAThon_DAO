@@ -35,11 +35,6 @@ public class TeamTest {
         assertEquals(true, Team.getAllTeams().contains(testTeam2));
     }
 
-    @Test
-    public void member_instantiatesCorrectly_true() {
-        Member testMember = new Member("Anduin");
-        assertEquals(true, testMember instanceof Member);
-    }
 
 
 //    @After

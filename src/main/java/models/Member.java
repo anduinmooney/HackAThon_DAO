@@ -9,4 +9,8 @@ public class Member {
     public Member(String name) {
         hackMemberName = name;
     }
+
+    public String getMemberName() {
+        return null;
+    }
 }
