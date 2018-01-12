@@ -17,6 +17,6 @@ public class Team {
     }
 
     public String getTeamDescription() {
-        return null;
+        return hackTeamDescription;
     }
 }
