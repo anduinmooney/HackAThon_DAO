@@ -44,6 +44,14 @@ public class TeamTest {
         assertEquals(1, testTeam.getTeamId());
     }
 
+    @Test
+    public void team_getTeamId_3 () {
+        Team testTeam = new Team("Anduin's Team", "Anduin's Team Description");
+        Team testTeam2 = new Team("Jimmy's Team", "Jimmy's Team Description");
+        Team testTeam3 = new Team("Gabe's Team", "Gabe's Team Description");
+        assertEquals(3, testTeam3.getTeamId());
+    }
+
 
 
 //    @After
