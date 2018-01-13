@@ -1,0 +1,17 @@
+{{#partial "title"}}
+    Current Members!
+{{/partial}}
+{{#partial "content"}}
+    {{#if allMembers}}
+        <h1>{{teamName}}</h1><br>
+        <h4>{{description}}</h4><br>
+        {{#each allMembers}}
+            <h5>Name:</h5>
+            <p>{{name}}</p>
+            <br>
+        {{/each}}
+    {{/if}}
+
+{{/partial}}
+
+{{> layout.hbs}}
