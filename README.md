@@ -30,7 +30,7 @@ _Make sure to install Intellij or you won't be able to run this app._
 
 ## Known Bugs
 
-_Team name, description, and members fail to appear on the "See All Teams" tab, unable to edit teams. _
+_Team name, description, and members fail to appear on the "See All Teams" tab, unable to edit teams._
 
 ## Support and contact details
 
