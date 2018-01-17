@@ -41,7 +41,7 @@ public class TeamTest {
     @Test
     public void team_getTeamId_1() {
         Team testTeam = new Team("Anduin's Team", "Anduin's Team Description", "team1", "team2", "team3", "team4", "team5");
-        assertEquals(1, testTeam.getTeamId());
+        assertEquals(1, testTeam.getId());
     }
 
     @Test
@@ -49,7 +49,7 @@ public class TeamTest {
         Team testTeam = new Team("Anduin's Team", "Anduin's Team Description", "team1", "team2", "team3", "team4", "team5");
         Team testTeam2 = new Team("Jimmy's Team", "Jimmy's Team Description", "team1", "team2", "team3", "team4", "team5");
         Team testTeam3 = new Team("Gabe's Team", "Gabe's Team Description", "team1", "team2", "team3", "team4", "team5");
-        assertEquals(3, testTeam3.getTeamId());
+        assertEquals(3, testTeam3.getId());
     }
 
     @Test

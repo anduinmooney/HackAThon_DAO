@@ -19,12 +19,6 @@ public class App {
     public static void main(String[] args) {
         staticFileLocation("/public");
 
-        get("/", (request, response) -> {
-            Map<String, Object> model = new HashMap<>();
-            return new ModelAndView(model, "index.hbs");
-        }, new HandlebarsTemplateEngine());
-
-
         get("teams/new", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             return new ModelAndView(model, "newTeam.hbs");
@@ -45,12 +39,39 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
 
+        get("/", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            return new ModelAndView(model, "index.hbs");
+        }, new HandlebarsTemplateEngine());
+
+
         get("/teams/allteams", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             List allTeams = Team.getAllTeams();
             model.put("allTeams", allTeams);
             return new ModelAndView(model, "details.hbs");
         }, new HandlebarsTemplateEngine());
+
+
+        get("/teams/:id/update", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfTeamToEdit = Integer.parseInt(request.params("id"));
+            Team editTeam = Team.findById(idOfTeamToEdit);
+            model.put("editTeam", editTeam);
+            return new ModelAndView(model, "update.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        post("/teams/:id/update", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            String newTeamName = request.queryParams("teamName");
+            int idOfTeamToEdit = Integer.parseInt(request.params("id"));
+            Team editTeam = Team.findById(idOfTeamToEdit);
+            editTeam.update(newTeamName);
+            return new ModelAndView(model, "success.hbs");
+        }, new HandlebarsTemplateEngine());
+
+
+
 
 
     }
