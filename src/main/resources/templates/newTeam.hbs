@@ -3,14 +3,36 @@
 {{/partial}}
 {{#partial "content"}}
     <h1>Add a new team</h1>
-    <form action='/teams/new/newMember' method="post">
+    <form action='/teams/new/success' method="post">
         <div class="form-group">
-            <label for="teamName">Team name</label>
+            <label for="teamName">Team Name</label>
             <input id="teamName" name="teamName" class="form-control" type="text">
         </div>
         <div class="form-group">
-            <label for="teamDescription">Team description</label>
+            <label for="teamDescription">Team Description</label>
             <input id="teamDescription" name="teamDescription" class="form-control" type="text">
+        </div>
+        <div class="form-group">
+             <label for="teamMember1">Team Member 1</label>
+             <input id="teamMember1" name="teamMember1" class="form-control" type="text">
+        </div>
+        <div class="form-group">
+             <label for="teamMember2">Team Member 2</label>
+             <input id="teamMember2" name="teamMember2" class="form-control" type="text">
+        </div>
+        <div class="form-group">
+             <label for="teamMember3">Team Member 3</label>
+             <input id="teamMember3" name="teamMember3" class="form-control" type="text">
+        </div>
+
+        <div class="form-group">
+             <label for="teamMember4">Team Member 4</label>
+             <input id="teamMember4" name="teamMember4" class="form-control" type="text">
+        </div>
+
+        <div class="form-group">
+             <label for="teamMember5">Team Member 5</label>
+             <input id="teamMember5" name="teamMember5" class="form-control" type="text">
         </div>
         <button type="submit" class="btn">Continue</button>
     </form>

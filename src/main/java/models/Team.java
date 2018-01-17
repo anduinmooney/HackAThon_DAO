@@ -8,12 +8,14 @@ public class Team {
     private String hackTeamDescription;
     private static List<Team> allTeams = new ArrayList<Team>();
     private int hackTeamId;
+    private String hackTeamMate1;
 
-    public Team(String teamName, String teamDescription) {
+    public Team(String teamName, String teamDescription, String teamMate1) {
         hackTeamName = teamName;
         hackTeamDescription = teamDescription;
         allTeams.add(this);
         hackTeamId = allTeams.size();
+        hackTeamMate1 = teamMate1;
     }
 
     public String getTeamName() {
@@ -34,5 +36,8 @@ public class Team {
 
     public static void clearAllTeams() {
        allTeams.clear();
+}
+    public String getTeamMate1() {
+        return null;
     }
 }

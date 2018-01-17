@@ -1,12 +1,18 @@
 {{#partial "title"}}
-    "HackAThon Teams"
+    HackAThon Teams
 {{/partial}}
 {{#partial "content"}}
-    {{#if teams}}
-        {{#each teams}}
+    {{#if allTeams}}
+        {{#each allTeams}}
             <div class = well>
-            <h2>Team Name: {{ newTeam.teamName }}</h2>
-            <p>Team Description: {{ newTeam.teamDescription }}</p>
+            <h2>Team Name: {{ teamName }}</h2>
+            <h3>Team Description: {{ teamDescription }}</h3>
+            <h5>Team Member 1: {{ teamMember1 }}</h5>
+            <h5>Team Member 2: {{ teamMember2 }}</h5>
+            <h5>Team Member 3: {{ teamMember3 }}</h5>
+            <h5>Team Member 4: {{ teamMember4 }}</h5>
+            <h5>Team Member 5: {{ teamMember5 }}</h5>
+            </div>
         {{/each}}
     {{else}}
     <p>No teams available</p>

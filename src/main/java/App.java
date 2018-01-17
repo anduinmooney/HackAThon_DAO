@@ -30,36 +30,24 @@ public class App {
             return new ModelAndView(model, "newTeam.hbs");
         }, new HandlebarsTemplateEngine());
 
-        post("teams/new/newMember",(request, response) -> {
+        post("teams/new/success",(request, response) -> {
             Map<String, Object> model = new HashMap<>();
-            String teamName = request.queryParams("name");
-            String description = request.queryParams("description");
-            Team newTeam = new Team(teamName, description);
+            String teamName = request.queryParams("teamName");
+            String description = request.queryParams("teamDescription");
+            String teamMate1 = request.queryParams("teamMate1");
+            Team newTeam = new Team(teamName, description, teamMate1);
             model.put("newTeam", newTeam);
-            return new ModelAndView(model, "newMember.hbs");
+            return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
 
-        post("teams/new/newMember/next",(request, response) -> {
-            Map<String, Object> model = new HashMap<>();
-            String memberName = request.queryParams("name");
-            Member newMember = new Member(memberName);
-            model.put("newMember", newMember);
-            return new ModelAndView(model, "newMember.hbs");
-        }, new HandlebarsTemplateEngine());
 
         get("/teams/allteams", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             List allTeams = Team.getAllTeams();
-            model.put("teams", allTeams);
+            model.put("allTeams", allTeams);
             return new ModelAndView(model, "details.hbs");
         }, new HandlebarsTemplateEngine());
 
-        get("/teams/details/finish", (request, response) -> {
-            Map<String, Object> model = new HashMap<>();
-            List teams = Team.getAllTeams();
-            model.put("teams", teams);
-            return new ModelAndView(model, "display.hbs");
-        }, new HandlebarsTemplateEngine());
 
     }
 }
