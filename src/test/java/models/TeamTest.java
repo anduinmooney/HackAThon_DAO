@@ -82,7 +82,15 @@ public class TeamTest {
         assertEquals("team5", testTeam.getTeamMate5());
     }
 
+    @Test
+    public void updateChangesPostContent() throws Exception {
+        Team testTeam = new Team("Anduin's Team", "Anduin's Team Description", "team1", "team2", "team3", "team4", "team5");
+        String formerTeamName = testTeam.getTeamName();
 
+        testTeam.update("TEST");
+
+        assertNotEquals(formerTeamName, testTeam.getTeamName());
+    }
 
 //    @After
 }

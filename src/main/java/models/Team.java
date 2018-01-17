@@ -66,4 +66,8 @@ public class Team {
     public String getTeamMate5() {
         return hackTeamMate5;
     }
+
+    public void update(String hackTeamName) {
+        this.hackTeamName = hackTeamName;
+    }
 }
