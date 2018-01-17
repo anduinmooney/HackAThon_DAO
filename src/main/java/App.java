@@ -35,7 +35,11 @@ public class App {
             String teamName = request.queryParams("teamName");
             String description = request.queryParams("teamDescription");
             String teamMate1 = request.queryParams("teamMate1");
-            Team newTeam = new Team(teamName, description, teamMate1);
+            String teamMate2 = request.queryParams("teamMate2");
+            String teamMate3 = request.queryParams("teamMate3");
+            String teamMate4 = request.queryParams("teamMate4");
+            String teamMate5 = request.queryParams("teamMate5");
+            Team newTeam = new Team(teamName, description, teamMate1, teamMate2, teamMate3, teamMate4, teamMate5);
             model.put("newTeam", newTeam);
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
