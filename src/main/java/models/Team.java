@@ -52,18 +52,18 @@ public class Team {
     }
 
     public String getTeamMate2() {
-        return null;
+        return hackTeamMate2;
     }
 
     public String getTeamMate3() {
-        return null;
+        return hackTeamMate3;
     }
 
     public String getTeamMate4() {
-        return null;
+        return hackTeamMate4;
     }
 
     public String getTeamMate5() {
-        return null;
+        return hackTeamMate5;
     }
 }
