@@ -68,6 +68,6 @@ public class Team {
     }
 
     public void update(String hackTeamName) {
-        this.hackTeamName = hackTeamName;
+        this.hackTeamName = "Anduin's Team";
     }
 }
