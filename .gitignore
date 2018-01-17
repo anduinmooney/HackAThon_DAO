@@ -18,6 +18,8 @@
 *.rar
 *.tar
 *.zip
+.iml
+*.iml
 
 # Logs and databases #
 ############
