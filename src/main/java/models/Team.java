@@ -38,6 +38,6 @@ public class Team {
        allTeams.clear();
 }
     public String getTeamMate1() {
-        return null;
+        return hackTeamMate1;
     }
 }
