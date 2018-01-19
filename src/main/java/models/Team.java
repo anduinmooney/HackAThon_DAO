@@ -27,20 +27,40 @@ public class Team {
         this.id = allTeams.size();
     }
 
-    public static Team findById(int id){
-        return allTeams.get(id-1);
+    @Override
+    public int hashCode() {
+        int result = hackTeamName.hashCode();
+        result = 31 * result + (hackTeamDescription != null ? hackTeamDescription.hashCode() : 0);
+        result = 31 * result + id;
+        return result;
     }
 
     public String getTeamName() {
         return hackTeamName;
     }
 
+    public void setTeamName(String hackTeamName) {
+        this.hackTeamName = hackTeamName;
+    }
+
     public String getTeamDescription() {
         return hackTeamDescription;
     }
 
-    public static List<Team> getAllTeams() {
-        return allTeams;
+    public void setTeamDescription(String hackTeamDescription) {
+        this.hackTeamDescription = hackTeamDescription;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Team team = (Team) o;
+
+        if (id != team.id) return false;
+        if (!hackTeamName.equals(team.hackTeamName)) return false;
+        return hackTeamDescription != null ? hackTeamDescription.equals(team.hackTeamDescription) : team.hackTeamDescription == null;
     }
 
 
@@ -70,6 +90,10 @@ public class Team {
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void update(String hackTeamName) {
