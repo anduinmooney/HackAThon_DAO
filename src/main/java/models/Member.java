@@ -5,6 +5,7 @@ import java.util.List;
 public class Member {
     private String hackMemberName;
     private int hackMemberId;
+    private int id;
     private static List<Member> allMembers = new ArrayList<Member>();
 
 
