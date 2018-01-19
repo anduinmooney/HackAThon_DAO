@@ -27,13 +27,6 @@ public class Team {
         this.id = allTeams.size();
     }
 
-    @Override
-    public int hashCode() {
-        int result = hackTeamName.hashCode();
-        result = 31 * result + (hackTeamDescription != null ? hackTeamDescription.hashCode() : 0);
-        result = 31 * result + id;
-        return result;
-    }
 
     public String getTeamName() {
         return hackTeamName;
@@ -59,10 +52,17 @@ public class Team {
         Team team = (Team) o;
 
         if (id != team.id) return false;
-        if (!hackTeamName.equals(team.hackTeamName)) return false;
+        if (hackTeamName != null ? !hackTeamName.equals(team.hackTeamName) : team.hackTeamName != null) return false;
         return hackTeamDescription != null ? hackTeamDescription.equals(team.hackTeamDescription) : team.hackTeamDescription == null;
     }
 
+    @Override
+    public int hashCode() {
+        int result = hackTeamName != null ? hackTeamName.hashCode() : 0;
+        result = 31 * result + (hackTeamDescription != null ? hackTeamDescription.hashCode() : 0);
+        result = 31 * result + id;
+        return result;
+    }
 
     public static void clearAllTeams() {
        allTeams.clear();
