@@ -83,7 +83,7 @@ public class Sql2oMemberDaoTest {
         memberDao.add(member2);
         int daoSize = memberDao.getAll().size();
         memberDao.clearAllMembers();
-        assertTrue(daoSize > 5 && daoSize > memberDao.getAll().size());
+        assertTrue(daoSize > 1 && daoSize > memberDao.getAll().size());
     }
 
 
