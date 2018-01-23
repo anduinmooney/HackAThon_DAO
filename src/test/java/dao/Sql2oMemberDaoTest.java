@@ -27,7 +27,7 @@ public class Sql2oMemberDaoTest {
 
     @Test
     public void addingMemberSetsId() throws Exception {
-        Member member = new Member ("Anduin");
+        Member member = new Member ("Anduin", 1);
         int originalMemberId = member.getId();
         memberDao.add(member);
         assertNotEquals(originalMemberId, member.getId());
@@ -35,11 +35,23 @@ public class Sql2oMemberDaoTest {
 
     @Test
     public void existingMembersCanBeFoundById() throws Exception {
-        Member member = new Member ("Anduin");
+        Member member = new Member ("Anduin", 1);
         memberDao.add(member);
         Member foundMember = memberDao.findById(member.getId());
         assertEquals(member, foundMember);
     }
+
+    @Test
+    public void getAllByTeam() {
+        Member member = new Member("Anduin", 1);
+        Member member2 = new Member("Gabe", 1);
+        Member member3 = new Member("Steven", 1);
+        memberDao.add(member);
+        memberDao.add(member2);
+        memberDao.add(member3);
+        assertEquals(2, memberDao.getAllByTeam(1).size());
+    }
+
 
     @After
     public void tearDown() throws Exception {

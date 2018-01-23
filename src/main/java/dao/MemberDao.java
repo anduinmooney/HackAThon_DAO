@@ -15,6 +15,8 @@ public interface MemberDao {
 
     Member findById(int id);
 
+    List<Member> getAllByTeam(int teamId);
+
     //update
 //    void update(int id, String name);
 

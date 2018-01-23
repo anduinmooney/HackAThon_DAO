@@ -10,15 +10,16 @@ public class Member {
 
 
 
-    public Member(String name) {
+    public Member(String name, int hackMemberId) {
         //hackMemberId = allMembers.size();
         this.hackMemberName = name;
+        this.hackMemberId = hackMemberId;
    //     allMembers.add(this);
     }
 
     public String getMemberName() {
         return hackMemberName;
-    }
+}
 
     @Override
     public boolean equals(Object o) {
