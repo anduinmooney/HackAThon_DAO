@@ -11,11 +11,12 @@ public interface MemberDao {
 
     //read
     List<Member> getAll();
-//    List<Member> getAllMembersByTeam(int teamId);
 
     Member findById(int id);
 
     List<Member> getAllByTeam(int teamId);
+
+    void update(int id, String newHackMemberName, int newHackMemberId);
 
     //update
 //    void update(int id, String name);

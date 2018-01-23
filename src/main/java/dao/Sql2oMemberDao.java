@@ -54,4 +54,18 @@ public class Sql2oMemberDao implements MemberDao {
                     .executeAndFetch(Member.class);
         }
     }
+
+    @Override
+    public void update(int id, String newHackMemberName, int newHackMemberId) {
+        String sql = "UPDATE members SET (hackMemberName, hackMemberId) = (:hackMemberName, :hackMemberId) WHERE id=:id";
+        try (Connection con = sql2o.open()) {
+            con.createQuery(sql)
+                    .addParameter("hackMemberName", newHackMemberName)
+                    .addParameter("hackMemberId", newHackMemberId)
+                    .addParameter("id", id)
+                    .executeUpdate();
+        } catch (Sql2oException ex) {
+            System.out.println(ex);
+        }
+    }
 }
