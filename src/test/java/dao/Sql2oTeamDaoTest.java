@@ -58,14 +58,9 @@ public class Sql2oTeamDaoTest {
         Team team = new Team("The Mavericks", "we're cool");
         teamDao.add(team);
         teamDao.update(1, "The Richards", "we're cooler");
-        assertEquals("The Mavericks", teamDao.findById(1).getTeamName());
+        assertEquals("The Richards", teamDao.findById(1).getTeamName());
     }
-
-    public Team setupNewTeam(){
-        return new Team("The Richards", "Kinda cool");
-    }
-
-
+    
     @After
     public void tearDown() throws Exception {
         conn.close();
