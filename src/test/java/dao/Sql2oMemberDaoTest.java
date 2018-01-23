@@ -28,7 +28,7 @@ public class Sql2oMemberDaoTest {
     public void addingMemberSetsId() throws Exception {
         Member member = new Member ("Anduin");
         int originalMemberId = member.getId();
-        memberDao.add(null);
+        memberDao.add(member);
         assertNotEquals(originalMemberId, member.getId());
     }
 
