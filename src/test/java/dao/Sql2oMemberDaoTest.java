@@ -52,9 +52,20 @@ public class Sql2oMemberDaoTest {
         assertEquals(3, memberDao.getAllByTeam(1).size());
     }
 
+    @Test
+    public void addedMembersAreReturnedFromGetAll() throws Exception {
+        Member member = setupNewMember();
+        memberDao.add(null);
+        assertEquals(1, memberDao.getAll().size());
+    }
+
 
     @After
     public void tearDown() throws Exception {
         conn.close();
+    }
+
+    public Member setupNewMember(){
+        return new Member("Anduin",1 );
     }
 }
