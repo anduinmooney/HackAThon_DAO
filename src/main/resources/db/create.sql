@@ -5,3 +5,8 @@ CREATE TABLE IF NOT EXISTS teams (
   hackTeamName VARCHAR,
   hackTeamDescription VARCHAR,
 );
+
+CREATE TABLE IF NOT EXISTS members (
+id int PRIMARY KEY auto_increment,
+hackMemberName VARCHAR
+);
