@@ -13,10 +13,10 @@ public interface TeamDao {
 
     Team findById(int id);
     //update
-    //  void update(int id, String content);
+      void update(int id, String content);
     //delete
-//   void deleteTask();
+      void deleteTask();
 
-//   void clearAllTasks();
+      void clearAllTasks();
 
 }
