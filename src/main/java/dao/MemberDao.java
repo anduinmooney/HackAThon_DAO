@@ -19,10 +19,9 @@ public interface MemberDao {
     void update(int id, String newHackMemberName, int newHackMemberId);
 
     //update
-//    void update(int id, String name);
 
     //delete
-//    void deleteById(int id);
+    void deleteById(int id);
 //    void clearAllCategories();
 
 }
