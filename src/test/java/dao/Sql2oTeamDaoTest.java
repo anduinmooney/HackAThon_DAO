@@ -78,7 +78,7 @@ public class Sql2oTeamDaoTest {
         teamDao.add(otherTeam);
         int daoSize = teamDao.getAll().size();
         teamDao.clearAllTeams();
-        assertTrue(daoSize > 5 && daoSize > teamDao.getAll().size());
+        assertTrue(daoSize > 0 && daoSize > teamDao.getAll().size());
     }
 
 
