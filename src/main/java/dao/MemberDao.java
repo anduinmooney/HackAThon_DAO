@@ -22,6 +22,6 @@ public interface MemberDao {
 
     //delete
     void deleteById(int id);
-//    void clearAllCategories();
 
+    void clearAllMembers();
 }
