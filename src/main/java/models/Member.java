@@ -6,14 +6,14 @@ public class Member {
     private String hackMemberName;
     private int hackMemberId;
     private int id;
-    private static List<Member> allMembers = new ArrayList<Member>();
+   // private static List<Member> allMembers = new ArrayList<Member>();
 
 
 
     public Member(String name) {
-        hackMemberId = allMembers.size();
-        hackMemberName = name;
-        allMembers.add(this);
+        //hackMemberId = allMembers.size();
+        this.hackMemberName = name;
+   //     allMembers.add(this);
     }
 
     public String getMemberName() {
@@ -64,19 +64,19 @@ public class Member {
         this.id = id;
     }
 
-    public static List<Member> getAllMembers() {
-        return allMembers;
-    }
-
-    public static void setAllMembers(List<Member> allMembers) {
-        Member.allMembers = allMembers;
-    }
+//    public static List<Member> getAllMembers() {
+//        return allMembers;
+//    }
+//
+//    public static void setAllMembers(List<Member> allMembers) {
+//        Member.allMembers = allMembers;
+//    }
 
     public int getMemberId() {
         return id;
     }
 
-    public static void clearAllMembers() {
-        allMembers.clear();
-    }
+//    public static void clearAllMembers() {
+//        allMembers.clear();
+//    }
 }

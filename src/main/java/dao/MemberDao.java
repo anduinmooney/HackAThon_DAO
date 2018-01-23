@@ -10,10 +10,10 @@ public interface MemberDao {
     void add (Member member);
 
     //read
-    List<Member> getAll();
-    List<Member> getAllMembersByTeam(int teamId);
-
-    Member findById(int id);
+//    List<Member> getAll();
+//    List<Member> getAllMembersByTeam(int teamId);
+//
+//    Member findById(int id);
 
     //update
 //    void update(int id, String name);
