@@ -29,14 +29,14 @@ public class Sql2oMemberDaoTest {
     public void addingMemberSetsId() throws Exception {
         Member member = new Member ("Anduin");
         int originalMemberId = member.getId();
-        memberDao.add(null);
+        memberDao.add(member);
         assertNotEquals(originalMemberId, member.getId());
     }
 
     @Test
     public void existingMembersCanBeFoundById() throws Exception {
         Member member = new Member ("Anduin");
-        memberDao.add(null);
+        memberDao.add(member);
         Member foundMember = memberDao.findById(member.getId());
         assertEquals(member, foundMember);
     }
