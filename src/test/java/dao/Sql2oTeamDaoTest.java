@@ -27,7 +27,7 @@ public class Sql2oTeamDaoTest {
 
     @Test
     public void addingCourseSetsId() throws Exception {
-        Team team = new Team ("Team 1", "", "", "", "", "", "");
+        Team team = new Team ("Team 1", "");
         int originalTeamId = team.getId();
         teamDao.add(team);
         assertNotEquals(originalTeamId, team.getId());
@@ -35,7 +35,7 @@ public class Sql2oTeamDaoTest {
 
     @Test
     public void existingTeamsCanBeFoundById() throws Exception {
-        Team team = new Team ("Team 1", "", "", "", "", "", "");
+        Team team = new Team ("Team 1", "");
         teamDao.add(team);
         Team foundTeam = teamDao.findById(team.getId());
         assertEquals(team, foundTeam);
@@ -43,7 +43,7 @@ public class Sql2oTeamDaoTest {
 
     @Test
     public void addedTeamsAreReturnedFromgetAll() throws Exception {
-        Team team = new Team ("Team 1", "", "", "", "", "", "");
+        Team team = new Team ("Team 1", "");
         teamDao.add(team);
         assertEquals(1, teamDao.getAll().size());
     }
