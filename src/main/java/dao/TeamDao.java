@@ -13,10 +13,12 @@ public interface TeamDao {
 
     Team findById(int id);
     //update
-      void update(int id, String content);
+
     //delete
       void clearAllTeams();
 
-      void deleteById(int id);
+    void update(int id, String newTeamName, String newTeamDescription);
+
+    void deleteById(int id);
 
 }
