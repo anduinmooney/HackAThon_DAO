@@ -27,20 +27,50 @@ public class Member {
 
         Member member = (Member) o;
 
+        if (hackMemberId != member.hackMemberId) return false;
         if (id != member.id) return false;
-        if (hackMemberName != null ? !hackMemberName.equals(member.hackMemberName) : member.hackMemberName != null) return false;
-        return allMembers != null ? allMembers.equals(member.allMembers) : member.allMembers == null;
+        return hackMemberName.equals(member.hackMemberName);
     }
 
     @Override
     public int hashCode() {
-        int result = hackMemberName != null ? hackMemberName.hashCode() : 0;
-        result = 31 * result + (allMembers != null ? allMembers.hashCode() : 0);
+        int result = hackMemberName.hashCode();
+        result = 31 * result + hackMemberId;
         result = 31 * result + id;
         return result;
     }
 
+    public String getHackMemberName() {
+        return hackMemberName;
+    }
 
+    public void setHackMemberName(String hackMemberName) {
+        this.hackMemberName = hackMemberName;
+    }
+
+    public int getHackMemberId() {
+        return hackMemberId;
+    }
+
+    public void setHackMemberId(int hackMemberId) {
+        this.hackMemberId = hackMemberId;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public static List<Member> getAllMembers() {
+        return allMembers;
+    }
+
+    public static void setAllMembers(List<Member> allMembers) {
+        Member.allMembers = allMembers;
+    }
 
     public int getMemberId() {
         return id;
