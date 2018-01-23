@@ -66,7 +66,7 @@ public class Sql2oTeamDaoTest {
         Team team = new Team ("The Mavericks", "we're cool");
         teamDao.add(team);
         teamDao.deleteById(team.getId());
-        assertEquals(1, teamDao.getAll().size());
+        assertEquals(0, teamDao.getAll().size());
     }
 
     @After
