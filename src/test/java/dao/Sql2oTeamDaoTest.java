@@ -54,13 +54,21 @@ public class Sql2oTeamDaoTest {
     }
 
     @Test
-    public void update() {
+    public void updateByIdUpdatesTeam() {
         Team team = new Team("The Mavericks", "we're cool");
         teamDao.add(team);
         teamDao.update(1, "The Richards", "we're cooler");
         assertEquals("The Richards", teamDao.findById(1).getTeamName());
     }
-    
+
+    @Test
+    public void deleteByIdDeletesTeam() throws Exception {
+        Team team = new Team ("The Mavericks", "we're cool");
+        teamDao.add(team);
+        teamDao.deleteById(team.getId());
+        assertEquals(1, teamDao.getAll().size());
+    }
+
     @After
     public void tearDown() throws Exception {
         conn.close();
