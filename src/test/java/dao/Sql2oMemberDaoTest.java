@@ -90,7 +90,7 @@ public class Sql2oMemberDaoTest {
     public void memberIdIsReturnedCorrectly() throws Exception {
         Member member = setupNewMember();
         int originalMemberId = member.getHackMemberId();
-        memberDao.add(null);
+        memberDao.add(member);
         assertEquals(originalMemberId, memberDao.findById(member.getId()).getHackMemberId());
     }
 
