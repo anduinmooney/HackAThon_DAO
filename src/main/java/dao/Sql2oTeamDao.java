@@ -20,6 +20,10 @@ public class Sql2oTeamDao implements TeamDao {
         String sql = "INSERT INTO teams (hackTeamName, hackTeamDescription) VALUES (:teamName, :teamDescription)";
         try (Connection con = sql2o.open()) {
             int id = (int) con.createQuery(sql)
+                    .addParameter("teamName", team.getTeamName())
+                    .addParameter("teamDescription", team.getTeamDescription())
+                    .addColumnMapping("TEAMNAME", "teamName")
+                    .addColumnMapping("TEAMDESCRIPTION", "teamDescription")
                     .bind(team)
                     .executeUpdate()
                     .getKey();

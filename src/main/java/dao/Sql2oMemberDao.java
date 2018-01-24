@@ -19,6 +19,10 @@ public class Sql2oMemberDao implements MemberDao {
         String sql = "INSERT INTO members (hackMemberName, hackMemberId) VALUES (:hackMemberName, :hackMemberId)"; //here
         try (Connection con = sql2o.open()) {
             int id = (int) con.createQuery(sql)
+                    .addParameter("hackMemberName", member.getMemberName())
+                    .addParameter("hackMemberId", member.getHackMemberId())
+                    .addColumnMapping("NAME", "name")
+                    .addColumnMapping("MEMBERID", "memberID")
                     .bind(member)
                     .executeUpdate()
                     .getKey();

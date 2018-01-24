@@ -86,6 +86,14 @@ public class Sql2oMemberDaoTest {
         assertTrue(daoSize > 1 && daoSize > memberDao.getAll().size());
     }
 
+    @Test
+    public void memberIdIsReturnedCorrectly() throws Exception {
+        Member member = setupNewMember();
+        int originalMemberId = member.getHackMemberId();
+        memberDao.add(null);
+        assertEquals(originalMemberId, memberDao.findById(member.getId()).getHackMemberId());
+    }
+
 
     @After
     public void tearDown() throws Exception {
