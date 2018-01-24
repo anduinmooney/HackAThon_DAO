@@ -7,18 +7,14 @@
             <div class = well>
             <h2 class = "about">Team Name: {{ teamName }}</h2>
             <h3 class = "about">Team Description: {{ teamDescription }}</h3>
-            <h5 class = "about">Team Member 1: {{ teamMate1 }}</h5>
-            <h5 class = "about">Team Member 2: {{ teamMate2 }}</h5>
-            <h5 class = "about">Team Member 3: {{ teamMate3 }}</h5>
-            <h5 class = "about">Team Member 4: {{ teamMate4 }}</h5>
-            <h5 class = "about">Team Member 5: {{ teamMate5 }}</h5>
             </div>
             <a href="/teams/{{id}}/update">Edit this team</a>
+            <a href="/teams/{{id}}/delete">Delete this team</a>
         {{/each}}
     {{else}}
     <p>No teams available</p>
     {{/if}}
-    <a href="/">Go back</a>
+    <a href="/teams/deleteAll">DELETE ALL TEAMS</a>
 {{/partial}}
 
 {{> layout.hbs}}
