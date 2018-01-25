@@ -16,13 +16,13 @@ public class Sql2oMemberDao implements MemberDao {
 
     @Override
     public void add(Member member) {
-        String sql = "INSERT INTO members (hackMemberName, hackMemberId) VALUES (:hackMemberName, :hackMemberId)"; //here
+        String sql = "INSERT INTO members (hackMemberName, hackMemberId) VALUES (:name, :hackMemberId)"; //here
         try (Connection con = sql2o.open()) {
             int id = (int) con.createQuery(sql)
-                    .addParameter("hackMemberName", member.getMemberName())
+                    .addParameter("name", member.getMemberName())
                     .addParameter("hackMemberId", member.getHackMemberId())
                     .addColumnMapping("NAME", "name")
-                    .addColumnMapping("MEMBERID", "memberID")
+                    .addColumnMapping("HACKMEMBERID", "hackMemberId")
                     .bind(member)
                     .executeUpdate()
                     .getKey();
@@ -61,10 +61,10 @@ public class Sql2oMemberDao implements MemberDao {
 
     @Override
     public void update(int id, String newHackMemberName, int newHackMemberId) {
-        String sql = "UPDATE members SET (hackMemberName, hackMemberId) = (:hackMemberName, :hackMemberId) WHERE id=:id";
+        String sql = "UPDATE members SET (hackMemberName, hackMemberId) = (:name, :hackMemberId) WHERE id=:id";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)
-                    .addParameter("hackMemberName", newHackMemberName)
+                    .addParameter("name", newHackMemberName)
                     .addParameter("hackMemberId", newHackMemberId)
                     .addParameter("id", id)
                     .executeUpdate();

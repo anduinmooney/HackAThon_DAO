@@ -7,6 +7,18 @@
             <div class = well>
             <h2 class = "about">Team Name: {{ teamName }}</h2>
             <h3 class = "about">Team Description: {{ teamDescription }}</h3>
+            {{#if allMembers}}
+                <ul>
+                    {{#each allMembers}}
+                    <li class = "about">TESTEE <a href="/member/{{id}}">more</a></li>
+                    {{/each}}
+                </ul>
+            {{else}}
+            <p class = "about">&emsp;&emsp;No members {{memberName}}</p>
+            {{/if}}
+            <a href="/newMember">Add members</a>
+            <a href="/teams/members/new">Edit members</a>
+            <a href="/teams/members/new">Delete members</a>
             </div>
             <a href="/teams/{{id}}/update">Edit this team</a>
             <a href="/teams/{{id}}/delete">Delete this team</a>

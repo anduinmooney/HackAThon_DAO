@@ -6,7 +6,7 @@ public class Member {
     private String hackMemberName;
     private int hackMemberId;
     private int id;
-   // private static List<Member> allMembers = new ArrayList<Member>();
+    private static List<Member> allMembers = new ArrayList<Member>();
 
 
 
@@ -14,7 +14,7 @@ public class Member {
         //hackMemberId = allMembers.size();
         this.hackMemberName = name;
         this.hackMemberId = hackMemberId;
-   //     allMembers.add(this);
+        allMembers.add(this);
     }
 
     public String getMemberName() {
@@ -65,13 +65,13 @@ public class Member {
         this.id = id;
     }
 
-//    public static List<Member> getAllMembers() {
-//        return allMembers;
-//    }
-//
-//    public static void setAllMembers(List<Member> allMembers) {
-//        Member.allMembers = allMembers;
-//    }
+    public static List<Member> getAllMembers() {
+        return allMembers;
+    }
+
+    public static void setAllMembers(List<Member> allMembers) {
+        Member.allMembers = allMembers;
+    }
 
     public int getMemberId() {
         return id;

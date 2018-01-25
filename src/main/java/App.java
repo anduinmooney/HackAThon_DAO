@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 
 import com.sun.org.apache.xpath.internal.operations.Mod;
+import dao.MemberDao;
+import dao.Sql2oMemberDao;
 import dao.Sql2oTeamDao;
 import models.Team;
 import models.Member;
@@ -23,8 +25,9 @@ public class App {
         String connectionString = "jdbc:h2:~/todolist.db;INIT=RUNSCRIPT from 'classpath:db/create.sql'";
         Sql2o sql2o = new Sql2o(connectionString, "", "");
         Sql2oTeamDao teamDao = new Sql2oTeamDao(sql2o);
+        Sql2oMemberDao memberDao = new Sql2oMemberDao(sql2o);
 
-
+        //TEAM CRUD
         get("/teams/deleteAll", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             teamDao.clearAllTeams();
@@ -84,6 +87,66 @@ public class App {
             model.put("team", team);
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
+
+        //MEMBERS CRUD
+
+
+        get("/newMember", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+
+            List<Team> allTeams = teamDao.getAll();
+            model.put("teams", allTeams);
+
+            return new ModelAndView(model, "newMember.hbs");
+        }, new HandlebarsTemplateEngine());
+
+
+        post("/newMember", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            String memberName = request.queryParams("memberName");
+            Member newMember = new Member(memberName, 1 ); //ignore the hardcoded categoryId
+            memberDao.add(newMember);
+            model.put("member", newMember);
+            return new ModelAndView(model, "success.hbs");
+        }, new HandlebarsTemplateEngine());
+
+
+
+
+            //            List<Team> allTeams = teamDao.getAll();
+//            model.put("teams", allTeams);
+//            String memberName = request.queryParams("memberName");
+//            int newMemberId = Integer.parseInt(request.queryParams("hackMemberId"));
+//            Member newMember = new Member(memberName, newMemberId);
+//            memberDao.add(newMember);
+//            model.put("name", newMember);
+//            return new ModelAndView(model, "success.hbs");
+//        }, new HandlebarsTemplateEngine());
+
+
+
+
+
+
+
+
+//        get("/newMember", (request, response) -> {
+//            Map<String, Object> model = new HashMap<>();
+//            Team team = teamDao.findById(Integer.parseInt(request.params("id")));
+//            model.put("team", team);
+//            return new ModelAndView(model, "newMember.hbs");
+//        }, new HandlebarsTemplateEngine());
+
+//        post("/newMember", (request, response) -> {
+//            Map<String, Object> model = new HashMap<String, Object>();
+//            String memberName = request.queryParams("hackMemberName");
+//            int teamId = Integer.parseInt(request.params("hackTeamId"));
+//            Team team = teamDao.findById(teamId);
+//            Member member = new Member(memberName, teamId);
+//            memberDao.add(member);
+//            model.put("team", team);
+//            return new ModelAndView(model, "success.hbs");
+//        }, new HandlebarsTemplateEngine());
 
     }
 }

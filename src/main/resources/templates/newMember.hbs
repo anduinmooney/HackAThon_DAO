@@ -1,0 +1,15 @@
+{{#partial "title"}}
+    Add new members
+{{/partial}}
+{{#partial "content"}}
+    <h1>Add a new member</h1>
+    <form action='newMember' method="post">
+        <div class="form-group">
+            <label for="memberName">Member Name</label>
+            <input id="memberName" name="memberName" class="form-control" type="text">
+        </div>
+        <button type="submit" class="btn">Continue</button>
+    </form>
+{{/partial}}
+
+{{> layout.hbs}}
