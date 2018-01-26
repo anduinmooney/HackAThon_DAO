@@ -116,14 +116,20 @@ public class App {
 
         get("/members/deleteall", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-
             List<Team> allTeams = teamDao.getAll();
             model.put("team", allTeams);
-
             memberDao.clearAllMembers();
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
 
+//        get("/member/:id/:update", (req, res) -> {
+//            Map<String, Object> model = new HashMap<String, Object>();
+//            Member member = memberDao.findById(Integer.parseInt(req.params("id")));
+//            model.put("member", member);
+//            return new ModelAndView(model, "update.hbs");
+//        }, new HandlebarsTemplateEngine());
+
+        //post
 
     }
 }

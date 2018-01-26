@@ -9,13 +9,13 @@
             <h3 class = "about">Team Description: {{ teamDescription }}</h3>
             {{#if allMembers}}
                     {{#each allMembers}}
-                    <h4 class = "about">Teammate: {{ hackMemberName }}</h4>
+                    <h4 class = "about">Teammate: {{ member.hackMemberName }}</h4>
                     {{/each}}
             {{else}}
             <p class = "about">&emsp;&emsp;No members {{hackMemberName}}</p>
             {{/if}}
             <a href="/teams/{{id}}/members">Add members</a>
-            <a href="/teams/members/new">Edit members</a>
+            <a href="/member/:id/:update">Edit members</a>
             <a href="/members/deleteall">Delete members</a>
             </div>
             <a href="/teams/{{id}}/update">Edit this team</a>
