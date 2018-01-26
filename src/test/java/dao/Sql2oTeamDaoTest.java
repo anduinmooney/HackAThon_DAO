@@ -1,19 +1,23 @@
 package dao;
 
+import models.Member;
 import models.Team;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
 import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 public class Sql2oTeamDaoTest {
 
     private Sql2oTeamDao teamDao;
+    private Sql2oMemberDao memberDao;
     private Connection conn;
 
     @Before
@@ -21,6 +25,7 @@ public class Sql2oTeamDaoTest {
         String connectionString = "jdbc:h2:mem:testing;INIT=RUNSCRIPT from 'classpath:db/create.sql'";
         Sql2o sql2o = new Sql2o(connectionString, "", "");
         teamDao = new Sql2oTeamDao(sql2o);
+        memberDao = new Sql2oMemberDao(sql2o);
 
 
         conn = sql2o.open();
@@ -81,10 +86,29 @@ public class Sql2oTeamDaoTest {
         assertTrue(daoSize > 0 && daoSize > teamDao.getAll().size());
     }
 
+    @Test
+    public void getAllMembersByTeam() {
+        Team team = setupNewTeam();
+        teamDao.add(team);
+        int hackMemberId = team.getId();
+        Member member = new Member("Anduin", hackMemberId);
+        Member member2 = new Member("Gabe", hackMemberId);
+        Member member3 = new Member("Steven", hackMemberId);
+        memberDao.add(member);
+        memberDao.add(member2);
+        assertTrue(teamDao.getAllMembersByTeam(hackMemberId).size() == 2);
+        assertTrue(teamDao.getAllMembersByTeam(hackMemberId).contains(member));
+        assertTrue(teamDao.getAllMembersByTeam(hackMemberId).contains(member2));
+        Assert.assertFalse(teamDao.getAllMembersByTeam(hackMemberId).contains(member3));
+    }
 
     @After
     public void tearDown() throws Exception {
         conn.close();
+    }
+
+    public Team setupNewTeam(){
+        return new Team("The Mavericks", "We cool");
     }
 
 }

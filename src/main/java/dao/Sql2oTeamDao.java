@@ -1,6 +1,7 @@
 package dao;
 
 import models.Team;
+import models.Member;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import org.sql2o.Sql2oException;
@@ -20,10 +21,6 @@ public class Sql2oTeamDao implements TeamDao {
         String sql = "INSERT INTO teams (hackTeamName, hackTeamDescription) VALUES (:teamName, :teamDescription)";
         try (Connection con = sql2o.open()) {
             int id = (int) con.createQuery(sql)
-                    .addParameter("teamName", team.getTeamName())
-                    .addParameter("teamDescription", team.getTeamDescription())
-                    .addColumnMapping("TEAMNAME", "teamName")
-                    .addColumnMapping("TEAMDESCRIPTION", "teamDescription")
                     .bind(team)
                     .executeUpdate()
                     .getKey();
@@ -41,6 +38,8 @@ public class Sql2oTeamDao implements TeamDao {
         }
     }
 
+
+
     @Override
     public Team findById(int id) {
         try (Connection con = sql2o.open()) {
@@ -52,7 +51,7 @@ public class Sql2oTeamDao implements TeamDao {
 
     @Override
     public void update(int id, String newTeamName, String newTeamDescription) {
-        String sql = "UPDATE teams SET (hackTeamName, hackTeamDescription) = (:teamName, :teamDescription) WHERE id=:id";
+        String sql = "UPDATE teams SET (hackTeamName, hackTeamDescription) = (:teamName, :teamDescription) WHERE id = :id";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)
                     .addParameter("teamName", newTeamName)
@@ -66,7 +65,7 @@ public class Sql2oTeamDao implements TeamDao {
 
     @Override
     public void deleteById(int id) {
-        String sql = "DELETE from teams WHERE id=:id";
+        String sql = "DELETE from teams WHERE id = :id";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)
                     .addParameter("id", id)
@@ -86,4 +85,15 @@ public class Sql2oTeamDao implements TeamDao {
             System.out.println(ex);
         }
     }
+
+    @Override
+    public List<Member> getAllMembersByTeam(int hackMemberId) {
+        try(Connection con = sql2o.open()){
+            return con.createQuery("SELECT * FROM members WHERE hackMemberId = :hackMemberId")
+                    .addParameter("hackMemberId", hackMemberId)
+                    .executeAndFetch(Member.class);
+        }
+    }
+
+
 }

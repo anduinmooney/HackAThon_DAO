@@ -3,11 +3,11 @@
 {{/partial}}
 {{#partial "content"}}
     <h1>Add a new member</h1>
-    <form action='newMember' method="post">
-        <div class="form-group">
-            <label for="memberName">Member Name</label>
-            <input id="memberName" name="memberName" class="form-control" type="text">
-        </div>
+    <form action='/teams/{{addMember.id}}/members' method="post">
+    <div class="form-group">
+       <label for="hackMemberName">Member Name</label>
+       <input id="hackMemberName" name="hackMemberName" class="form-control" type="text">
+    </div>
         <button type="submit" class="btn">Continue</button>
     </form>
 {{/partial}}

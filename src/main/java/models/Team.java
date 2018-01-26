@@ -6,17 +6,12 @@ import java.util.List;
 public class Team {
     private String hackTeamName;
     private String hackTeamDescription;
-    private static List<Team> allTeams = new ArrayList<Team>();
     public int id;
-
 
     public Team(String teamName, String teamDescription) {
         hackTeamName = teamName;
         hackTeamDescription = teamDescription;
-
-        this.id = allTeams.size();
     }
-
 
     public String getTeamName() {
         return hackTeamName;
@@ -32,6 +27,14 @@ public class Team {
 
     public void setTeamDescription(String hackTeamDescription) {
         this.hackTeamDescription = hackTeamDescription;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override
@@ -54,20 +57,6 @@ public class Team {
         return result;
     }
 
-    public static void clearAllTeams() {
-       allTeams.clear();
-}
 
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void update(String hackTeamName) {
-        this.hackTeamName = hackTeamName;
-    }
 }

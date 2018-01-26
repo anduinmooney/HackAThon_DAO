@@ -1,5 +1,5 @@
 package dao;
-
+import dao.*;
 import models.*;
 import org.junit.After;
 import org.junit.Before;
@@ -13,6 +13,7 @@ import static org.junit.Assert.*;
 
 public class Sql2oMemberDaoTest {
     private Sql2oMemberDao memberDao;
+    private Sql2oMemberDao teamDao;
     private Connection conn;
 
     @Before
@@ -39,17 +40,6 @@ public class Sql2oMemberDaoTest {
         memberDao.add(member);
         Member foundMember = memberDao.findById(member.getId());
         assertEquals(member, foundMember);
-    }
-
-    @Test
-    public void getAllByTeam() {
-        Member member = new Member("Anduin", 1);
-        Member member2 = new Member("Gabe", 1);
-        Member member3 = new Member("Steven", 1);
-        memberDao.add(member);
-        memberDao.add(member2);
-        memberDao.add(member3);
-        assertEquals(3, memberDao.getAllByTeam(1).size());
     }
 
     @Test
@@ -95,12 +85,18 @@ public class Sql2oMemberDaoTest {
     }
 
 
+
+    public Team setupNewTeam(){
+        return new Team("The Mavericks", "We cool");
+    }
+
+
     @After
     public void tearDown() throws Exception {
         conn.close();
     }
 
     public Member setupNewMember(){
-        return new Member("Anduin",1 );
+        return new Member("Anduin", 1);
     }
 }

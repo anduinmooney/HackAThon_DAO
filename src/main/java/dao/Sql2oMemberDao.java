@@ -16,14 +16,14 @@ public class Sql2oMemberDao implements MemberDao {
 
     @Override
     public void add(Member member) {
-        String sql = "INSERT INTO members (hackMemberName, hackMemberId) VALUES (:name, :hackMemberId)"; //here
+        String sql = "INSERT INTO members (hackMemberName, hackMemberId) VALUES (:hackMemberName, :hackMemberId)"; //here
         try (Connection con = sql2o.open()) {
             int id = (int) con.createQuery(sql)
-                    .addParameter("name", member.getMemberName())
+                    .addParameter("hackMemberName", member.getMemberName())
                     .addParameter("hackMemberId", member.getHackMemberId())
-                    .addColumnMapping("NAME", "name")
+                    .addColumnMapping("HACKMEMBERNAME", "hackMemberName")
                     .addColumnMapping("HACKMEMBERID", "hackMemberId")
-                    .bind(member)
+
                     .executeUpdate()
                     .getKey();
             member.setId(id);
@@ -50,22 +50,11 @@ public class Sql2oMemberDao implements MemberDao {
     }
 
     @Override
-    public List<Member> getAllByTeam(int hackMemberId){
-        String sql = "SELECT * FROM members WHERE hackMemberId = :hackMemberId";
-        try (Connection con = sql2o.open()){
-            return con.createQuery(sql)
-                    .addParameter("hackMemberId", hackMemberId)
-                    .executeAndFetch(Member.class);
-        }
-    }
-
-    @Override
     public void update(int id, String newHackMemberName, int newHackMemberId) {
-        String sql = "UPDATE members SET (hackMemberName, hackMemberId) = (:name, :hackMemberId) WHERE id=:id";
+        String sql = "UPDATE members SET hackMemberName = :name WHERE id=:id";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)
                     .addParameter("name", newHackMemberName)
-                    .addParameter("hackMemberId", newHackMemberId)
                     .addParameter("id", id)
                     .executeUpdate();
         } catch (Sql2oException ex) {
@@ -95,4 +84,6 @@ public class Sql2oMemberDao implements MemberDao {
             System.out.println(ex);
         }
     }
+
+
 }

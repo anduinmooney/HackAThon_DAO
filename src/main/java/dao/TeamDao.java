@@ -1,5 +1,6 @@
 package dao;
 
+import models.Member;
 import models.Team;
 
 import java.util.List;
@@ -20,5 +21,7 @@ public interface TeamDao {
     void update(int id, String newTeamName, String newTeamDescription);
 
     void deleteById(int id);
+
+    List<Member> getAllMembersByTeam(int hackMemberId);
 
 }
