@@ -1,0 +1,22 @@
+{{#partial "content"}}
+    <div class = "well">
+    <p><a href="/teams">back</a></p>
+    <h3>{{team.name}}</h3>
+    <p>{{team.description}}</p>
+    <p><strong>Team Members:</strong></p>
+    {{#if members}}
+        <ul>
+            {{#each members}}
+                <li>{{name}}
+            {{/each}}
+        </ul>
+    {{else}}
+        <p>&emsp;&emsp;No Members</p>
+    {{/if}}
+    <hr>
+    <p><a href="{{team.id}}/newMember">Add a Team Member</a></p>
+    <p><a href="/teams/{{team.id}}/update">Update Team</a></p>
+    <p><a href="/teams/{{team.id}}/delete">Delete</a></p>
+
+{{/partial}}
+{{>layout.hbs}}

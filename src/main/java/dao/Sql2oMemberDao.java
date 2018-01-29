@@ -1,13 +1,14 @@
 package dao;
 
-import models.*;
+import models.Member;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import org.sql2o.Sql2oException;
 
 import java.util.List;
 
-public class Sql2oMemberDao implements MemberDao {
+public class Sql2oMemberDao implements MemberDao{
+
     private final Sql2o sql2o;
 
     public Sql2oMemberDao(Sql2o sql2o) {
@@ -15,46 +16,57 @@ public class Sql2oMemberDao implements MemberDao {
     }
 
     @Override
-    public void add(Member member) {
-        String sql = "INSERT INTO members (hackMemberName, hackMemberId) VALUES (:hackMemberName, :hackMemberId)"; //here
-        try (Connection con = sql2o.open()) {
+    public void add(Member member){
+        String sql = "INSERT INTO members (name, dateOfBirth, teamId) VALUES (:name, :dateOfBirth, :teamId)";
+        try (Connection con = sql2o.open()){
             int id = (int) con.createQuery(sql)
-                    .addParameter("hackMemberName", member.getMemberName())
-                    .addParameter("hackMemberId", member.getHackMemberId())
-                    .addColumnMapping("HACKMEMBERNAME", "hackMemberName")
-                    .addColumnMapping("HACKMEMBERID", "hackMemberId")
-
+                    .bind(member)
                     .executeUpdate()
                     .getKey();
             member.setId(id);
-        } catch (Sql2oException ex) {
+        } catch (Sql2oException ex){
             System.out.println(ex);
         }
+
     }
 
     @Override
-    public List<Member> getAll() {
-        try (Connection con = sql2o.open()) {
-            return con.createQuery("SELECT * FROM members")
-                    .executeAndFetch(Member.class);
-        }
-    }
-
-    @Override
-    public Member findById(int id) {
-        try (Connection con = sql2o.open()) {
-            return con.createQuery("SELECT * FROM members WHERE id = :id")
+    public Member findById(int id){
+        String sql = "SELECT * FROM members WHERE id = :id";
+        try (Connection con = sql2o.open()){
+            return con.createQuery(sql)
                     .addParameter("id", id)
                     .executeAndFetchFirst(Member.class);
         }
     }
 
     @Override
-    public void update(int id, String newHackMemberName, int newHackMemberId) {
-        String sql = "UPDATE members SET hackMemberName = :name WHERE id=:id";
-        try (Connection con = sql2o.open()) {
+    public List<Member> getAll(){
+        String sql = "SELECT * FROM members";
+        try (Connection con = sql2o.open()){
+            return con.createQuery(sql)
+                    .executeAndFetch(Member.class);
+        }
+    }
+
+    @Override
+    public List<Member> getAllMembersByTeam(int teamId){
+        String sql = "SELECT * FROM members WHERE teamId = :teamId";
+        try (Connection con = sql2o.open()){
+            return con.createQuery(sql)
+                    .addParameter("teamId", teamId)
+                    .executeAndFetch(Member.class);
+        }
+    }
+
+    @Override
+    public void update(int id, String name, String dateOfBirth){
+        String sql = "UPDATE members SET name = :name, dateOfBirth = :dateOfBirth WHERE id=:id";
+
+        try(Connection con = sql2o.open()) {
             con.createQuery(sql)
-                    .addParameter("name", newHackMemberName)
+                    .addParameter("name", name)
+                    .addParameter("dateOfBirth", dateOfBirth)
                     .addParameter("id", id)
                     .executeUpdate();
         } catch (Sql2oException ex) {
@@ -63,8 +75,8 @@ public class Sql2oMemberDao implements MemberDao {
     }
 
     @Override
-    public void deleteById(int id) {
-        String sql = "DELETE from members WHERE id=:id";
+    public void deleteById(int id){
+        String sql = "DELETE FROM members WHERE id = :id";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)
                     .addParameter("id", id)
@@ -73,17 +85,4 @@ public class Sql2oMemberDao implements MemberDao {
             System.out.println(ex);
         }
     }
-
-    @Override
-    public void clearAllMembers() {
-        String sql = "DELETE from members";
-        try (Connection con = sql2o.open()) {
-            con.createQuery(sql)
-                    .executeUpdate();
-        } catch (Sql2oException ex) {
-            System.out.println(ex);
-        }
-    }
-
-
 }

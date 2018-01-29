@@ -1,0 +1,16 @@
+{{#partial "content"}}
+<div class = "well">
+
+<h3>Current Teams</h3>
+{{#if teams}}
+{{#each teams}}
+    <p>{{id}}.&nbsp<strong>{{name}}</strong></p>
+    <p>{{description}}</p>
+    <p><a href="/teams/{{id}}">View Members</a></p>
+    <hr>
+{{/each}}
+{{else}}
+<p>No Teams</p>
+{{/if}}
+{{/partial}}
+{{>layout.hbs}}

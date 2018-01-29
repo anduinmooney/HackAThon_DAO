@@ -1,19 +1,13 @@
-{{#partial "title"}}
-    Create a new team
-{{/partial}}
 {{#partial "content"}}
-    <h1>Add a new team</h1>
-    <form action='/teams/new/success' method="post">
-        <div class="form-group">
-            <label for="teamName">Team Name</label>
-            <input id="teamName" name="teamName" class="form-control" type="text">
-        </div>
-        <div class="form-group">
-            <label for="teamDescription">Team Description</label>
-            <input id="teamDescription" name="teamDescription" class="form-control" type="text">
-        </div>
-        <button type="submit" class="btn">Continue</button>
+    <div class = "well">
+    <h3>New team:</h3>
+    <form action="/newTeam" method="post">
+        <label>Name: </label>
+        <input name="name">
+        <label>Description: </label>
+        <input name="description">
+
+        <button type="submit">submit</button>
     </form>
 {{/partial}}
-
-{{> layout.hbs}}
+{{>layout.hbs}}

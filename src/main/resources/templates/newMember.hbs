@@ -1,15 +1,12 @@
-{{#partial "title"}}
-    Add new members
-{{/partial}}
 {{#partial "content"}}
-    <h1>Add a new member</h1>
-    <form action='/teams/{{addMember.id}}/members' method="post">
-    <div class="form-group">
-       <label for="hackMemberName">Member Name</label>
-       <input id="hackMemberName" name="hackMemberName" class="form-control" type="text">
-    </div>
-        <button type="submit" class="btn">Continue</button>
-    </form>
-{{/partial}}
+    <div class = "well">
+    <h3>New member:</h3>
+    <form action="/teams/{{team.id}}/newMember" method="post">
+        <label>Name: </label>
+        <input name="memberName">
 
-{{> layout.hbs}}
+        <button type="submit">add</button>
+    </form>
+    </div>
+{{/partial}}
+{{>layout.hbs}}

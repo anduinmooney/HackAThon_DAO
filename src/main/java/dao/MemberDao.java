@@ -7,21 +7,15 @@ import java.util.List;
 public interface MemberDao {
 
     //create
-    void add(Member member);
-
-    //read
-    List<Member> getAll();
-
+    void add(Member team);
+//read
     Member findById(int id);
 
+    List<Member> getAll();
 
-
-    void update(int id, String newHackMemberName, int newHackMemberId);
-
-    //update
-
-    //delete
+    List<Member> getAllMembersByTeam(int teamId);
+//update
+    void update(int id, String name, String dateOfBirth);
+//delete
     void deleteById(int id);
-
-    void clearAllMembers();
 }

@@ -64,7 +64,7 @@ public class Sql2oTeamDaoTest {
         Team team = new Team("The Mavericks", "we're cool");
         teamDao.add(team);
         teamDao.update(1, "The Richards", "we're cooler");
-        assertEquals("The Richards", teamDao.findById(1).getTeamName());
+        assertEquals("The Richards", teamDao.findById(1).getName());
     }
 
     @Test
@@ -73,17 +73,6 @@ public class Sql2oTeamDaoTest {
         teamDao.add(team);
         teamDao.deleteById(team.getId());
         assertEquals(0, teamDao.getAll().size());
-    }
-
-    @Test
-    public void clearAllClearsAllTeams() throws Exception {
-        Team team = new Team("The Mavericks", "we're cool");
-        Team otherTeam = new Team("The Richards", "we're cooler");
-        teamDao.add(team);
-        teamDao.add(otherTeam);
-        int daoSize = teamDao.getAll().size();
-        teamDao.clearAllTeams();
-        assertTrue(daoSize > 0 && daoSize > teamDao.getAll().size());
     }
 
     @Test
@@ -96,10 +85,10 @@ public class Sql2oTeamDaoTest {
         Member member3 = new Member("Steven", hackMemberId);
         memberDao.add(member);
         memberDao.add(member2);
-        assertTrue(teamDao.getAllMembersByTeam(hackMemberId).size() == 2);
-        assertTrue(teamDao.getAllMembersByTeam(hackMemberId).contains(member));
-        assertTrue(teamDao.getAllMembersByTeam(hackMemberId).contains(member2));
-        Assert.assertFalse(teamDao.getAllMembersByTeam(hackMemberId).contains(member3));
+        assertTrue(memberDao.getAllMembersByTeam(hackMemberId).size() == 2);
+        assertTrue(memberDao.getAllMembersByTeam(hackMemberId).contains(member));
+        assertTrue(memberDao.getAllMembersByTeam(hackMemberId).contains(member2));
+        Assert.assertFalse(memberDao.getAllMembersByTeam(hackMemberId).contains(member3));
     }
 
     @After

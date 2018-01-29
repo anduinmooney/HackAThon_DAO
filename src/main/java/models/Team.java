@@ -1,32 +1,20 @@
 package models;
-import java.util.ArrayList;
-import java.util.List;
 
+import java.util.Objects;
 
 public class Team {
-    private String hackTeamName;
-    private String hackTeamDescription;
-    public int id;
 
-    public Team(String teamName, String teamDescription) {
-        hackTeamName = teamName;
-        hackTeamDescription = teamDescription;
+    private int id;
+    private String name;
+    private String description;
+
+    public Team(String name) {
+        this.name = name;
     }
 
-    public String getTeamName() {
-        return hackTeamName;
-    }
-
-    public void setTeamName(String hackTeamName) {
-        this.hackTeamName = hackTeamName;
-    }
-
-    public String getTeamDescription() {
-        return hackTeamDescription;
-    }
-
-    public void setTeamDescription(String hackTeamDescription) {
-        this.hackTeamDescription = hackTeamDescription;
+    public Team(String name, String description) {
+        this.name = name;
+        this.description = description;
     }
 
     public int getId() {
@@ -37,6 +25,22 @@ public class Team {
         this.id = id;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -45,18 +49,15 @@ public class Team {
         Team team = (Team) o;
 
         if (id != team.id) return false;
-        if (hackTeamName != null ? !hackTeamName.equals(team.hackTeamName) : team.hackTeamName != null) return false;
-        return hackTeamDescription != null ? hackTeamDescription.equals(team.hackTeamDescription) : team.hackTeamDescription == null;
+        if (!name.equals(team.name)) return false;
+        return description.equals(team.description);
     }
 
     @Override
     public int hashCode() {
-        int result = hackTeamName != null ? hackTeamName.hashCode() : 0;
-        result = 31 * result + (hackTeamDescription != null ? hackTeamDescription.hashCode() : 0);
-        result = 31 * result + id;
+        int result = id;
+        result = 31 * result + name.hashCode();
+        result = 31 * result + description.hashCode();
         return result;
     }
-
-
-
 }

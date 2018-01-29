@@ -1,14 +1,13 @@
 package dao;
 
 import models.Team;
-import models.Member;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import org.sql2o.Sql2oException;
 
 import java.util.List;
 
-public class Sql2oTeamDao implements TeamDao {
+public class Sql2oTeamDao implements TeamDao{
 
     private final Sql2o sql2o;
 
@@ -17,45 +16,47 @@ public class Sql2oTeamDao implements TeamDao {
     }
 
     @Override
-    public void add(Team team) {
-        String sql = "INSERT INTO teams (hackTeamName, hackTeamDescription) VALUES (:teamName, :teamDescription)";
-        try (Connection con = sql2o.open()) {
+    public void add(Team team){
+        String sql = "INSERT INTO teams (name, description) VALUES (:name, :description)";
+        try (Connection con = sql2o.open()){
             int id = (int) con.createQuery(sql)
                     .bind(team)
                     .executeUpdate()
                     .getKey();
             team.setId(id);
-        } catch (Sql2oException ex) {
+        } catch (Sql2oException ex){
             System.out.println(ex);
         }
+
     }
 
     @Override
-    public List<Team> getAll() {
-        try (Connection con = sql2o.open()) {
-            return con.createQuery("SELECT * FROM teams")
-                    .executeAndFetch(Team.class);
-        }
-    }
-
-
-
-    @Override
-    public Team findById(int id) {
-        try (Connection con = sql2o.open()) {
-            return con.createQuery("SELECT * FROM teams WHERE id = :id")
+    public Team findById(int id){
+        String sql = "SELECT * FROM teams WHERE id = :id";
+        try (Connection con = sql2o.open()){
+            return con.createQuery(sql)
                     .addParameter("id", id)
                     .executeAndFetchFirst(Team.class);
         }
     }
 
     @Override
-    public void update(int id, String newTeamName, String newTeamDescription) {
-        String sql = "UPDATE teams SET (hackTeamName, hackTeamDescription) = (:teamName, :teamDescription) WHERE id = :id";
-        try (Connection con = sql2o.open()) {
+    public List<Team> getAll(){
+        String sql = "SELECT * FROM teams";
+        try (Connection con = sql2o.open()){
+            return con.createQuery(sql)
+                    .executeAndFetch(Team.class);
+        }
+    }
+
+    @Override
+    public void update(int id, String name, String description){
+        String sql = "UPDATE teams SET (name, description) = (:name, :description) WHERE id = :id";
+
+        try(Connection con = sql2o.open()) {
             con.createQuery(sql)
-                    .addParameter("teamName", newTeamName)
-                    .addParameter("teamDescription", newTeamDescription)
+                    .addParameter("name", name)
+                    .addParameter("description", description)
                     .addParameter("id", id)
                     .executeUpdate();
         } catch (Sql2oException ex) {
@@ -64,8 +65,9 @@ public class Sql2oTeamDao implements TeamDao {
     }
 
     @Override
-    public void deleteById(int id) {
-        String sql = "DELETE from teams WHERE id = :id";
+    public void deleteById(int id){
+
+        String sql = "DELETE FROM teams WHERE id = :id";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)
                     .addParameter("id", id)
@@ -74,26 +76,5 @@ public class Sql2oTeamDao implements TeamDao {
             System.out.println(ex);
         }
     }
-
-    @Override
-    public void clearAllTeams() {
-        String sql = "DELETE from teams";
-        try (Connection con = sql2o.open()) {
-            con.createQuery(sql)
-                    .executeUpdate();
-        } catch (Sql2oException ex) {
-            System.out.println(ex);
-        }
-    }
-
-    @Override
-    public List<Member> getAllMembersByTeam(int hackMemberId) {
-        try(Connection con = sql2o.open()){
-            return con.createQuery("SELECT * FROM members WHERE hackMemberId = :hackMemberId")
-                    .addParameter("hackMemberId", hackMemberId)
-                    .executeAndFetch(Member.class);
-        }
-    }
-
 
 }

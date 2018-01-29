@@ -53,8 +53,8 @@ public class Sql2oMemberDaoTest {
     public void updateByIdUpdatesMember() {
         Member member = new Member("Anduin",1);
         memberDao.add(member);
-        memberDao.update(1,"Steven", 2);
-        assertEquals("Steven", memberDao.findById(1).getMemberName());
+        memberDao.update(1,"Steven", "");
+        assertEquals("Steven", memberDao.findById(1).getName());
     }
 
     @Test
@@ -64,27 +64,6 @@ public class Sql2oMemberDaoTest {
         memberDao.deleteById(member.getId());
         assertEquals(0, memberDao.getAll().size());
     }
-
-    @Test
-    public void clearAllClearsAllMembers() throws Exception {
-        Member member = new Member("Anduin", 1);
-        Member member2 = new Member("Steven", 2);
-        memberDao.add(member);
-        memberDao.add(member2);
-        int daoSize = memberDao.getAll().size();
-        memberDao.clearAllMembers();
-        assertTrue(daoSize > 1 && daoSize > memberDao.getAll().size());
-    }
-
-    @Test
-    public void memberIdIsReturnedCorrectly() throws Exception {
-        Member member = setupNewMember();
-        int originalMemberId = member.getHackMemberId();
-        memberDao.add(member);
-        assertEquals(originalMemberId, memberDao.findById(member.getId()).getHackMemberId());
-    }
-
-
 
     public Team setupNewTeam(){
         return new Team("The Mavericks", "We cool");
@@ -98,5 +77,8 @@ public class Sql2oMemberDaoTest {
 
     public Member setupNewMember(){
         return new Member("Anduin", 1);
+    }
+    public Member setupNewMember2(){
+        return new Member("Anduin", 2);
     }
 }

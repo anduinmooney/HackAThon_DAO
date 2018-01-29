@@ -1,0 +1,11 @@
+{{#partial "content"}}
+    <div class = "well">
+    <h3>Change member:</h3>
+    <form action="/member/{{member.id}}/update" method="post">
+        <label>New name: </label>
+        <input name="name" value="{{member.name}}">
+
+        <button type="submit">submit</button>
+    </form>
+{{/partial}}
+{{>layout.hbs}}

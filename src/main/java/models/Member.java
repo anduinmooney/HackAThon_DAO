@@ -1,30 +1,23 @@
 package models;
-import java.util.ArrayList;
-import java.util.List;
+
+import java.util.Objects;
 
 public class Member {
-    private String hackMemberName;
-    private int hackMemberId;
+
     private int id;
+    private String name;
+    private String dateOfBirth;
+    private int teamId;
 
-    public Member(String hackMemberName, int hackMemberId) {
-        this.hackMemberName = hackMemberName;
-        this.hackMemberId = hackMemberId;
+    public Member(String name, int teamId) {
+        this.name = name;
+        this.teamId = teamId;
     }
 
-    public String getMemberName() {
-        return hackMemberName;
-}
-    public void setHackMemberName(String hackMemberName) {
-        this.hackMemberName = hackMemberName;
-    }
-
-    public int getHackMemberId() {
-        return hackMemberId;
-    }
-
-    public void setHackMemberId(int hackMemberId) {
-        this.hackMemberId = hackMemberId;
+    public Member(String name, String dateOfBirth, int teamId) {
+        this.name = name;
+        this.dateOfBirth = dateOfBirth;
+        this.teamId = teamId;
     }
 
     public int getId() {
@@ -35,6 +28,30 @@ public class Member {
         this.id = id;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public int getTeamId() {
+        return teamId;
+    }
+
+    public void setTeamId(int teamId) {
+        this.teamId = teamId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -42,16 +59,18 @@ public class Member {
 
         Member member = (Member) o;
 
-        if (hackMemberId != member.hackMemberId) return false;
         if (id != member.id) return false;
-        return hackMemberName.equals(member.hackMemberName);
+        if (teamId != member.teamId) return false;
+        if (name != null ? !name.equals(member.name) : member.name != null) return false;
+        return dateOfBirth != null ? dateOfBirth.equals(member.dateOfBirth) : member.dateOfBirth == null;
     }
 
     @Override
     public int hashCode() {
-        int result = hackMemberName.hashCode();
-        result = 31 * result + hackMemberId;
-        result = 31 * result + id;
+        int result = id;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (dateOfBirth != null ? dateOfBirth.hashCode() : 0);
+        result = 31 * result + teamId;
         return result;
     }
 }
